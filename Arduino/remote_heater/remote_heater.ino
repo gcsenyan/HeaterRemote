@@ -4,15 +4,14 @@
 #include <printf.h>
 #include <RF24.h>
 #include <RF24_config.h>
+#include "remote.h"
 
-#define SERVO_PIN       5
-#define LED_PIN         8
-#define PHOTOCELL_PIN   4
+
 
 #define TIMEOUT     2000
 
-#define LED_OFF     HIGH
-#define LED_ON      LOW
+//#define LED_OFF     HIGH
+//#define LED_ON      LOW
 
 RF24 radio(9, 10);
 Servo servo;

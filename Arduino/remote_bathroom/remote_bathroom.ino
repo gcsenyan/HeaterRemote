@@ -3,9 +3,7 @@
 #include <printf.h>
 #include <RF24.h>
 #include <RF24_config.h>
-
-#define BUTTON_PIN  3
-#define LED_PIN     8
+#include "../remote.h"
 
 #define TIMEOUT     2000
 

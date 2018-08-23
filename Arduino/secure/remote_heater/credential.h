@@ -1,0 +1,3 @@
+
+#define RADIO_BH_ADDRESS   "00001"
+#define RADIO_HB_ADDRESS   "00002"

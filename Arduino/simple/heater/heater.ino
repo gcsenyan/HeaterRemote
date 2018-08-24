@@ -15,7 +15,7 @@
 #define RADIO_HB_ADDRESS   "00002"
 
 #define SERVO_REST_POS     0
-#define SERVO_ACT_POS      90
+#define SERVO_ACT_POS      120
 
 #define UPDATE_PERIOD      2000
 
@@ -32,6 +32,7 @@ const byte bh_address[6] = RADIO_BH_ADDRESS;
 
 void sendStatus();
 void operateServo();
+boolean isButtonPushed(int button_pin);
 
 void setup() {
   // Initialize serial port
@@ -65,6 +66,10 @@ void loop() {
       sendStatus();
     }
   }
+  if(isButtonPushed(BUTTON_PIN)) {
+    operateServo();
+    sendStatus();
+  }
   timer.run();
 }
 
@@ -90,4 +95,15 @@ void operateServo() {
   servo.write(SERVO_ACT_POS);
   delay(500);
   servo.write(SERVO_REST_POS);
+}
+
+boolean isButtonPushed(int button_pin) {
+  if (!digitalRead(button_pin)) {
+    delay(100);
+    if (!digitalRead(button_pin)) {
+      while(!digitalRead(button_pin));   // Wait until released.
+      return true;
+    }
+  }
+  return false;
 }
